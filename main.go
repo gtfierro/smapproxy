@@ -110,6 +110,6 @@ func main() {
 	http.Handle("/", httpauth.SimpleBasicAuth(*user, *pass)(http.HandlerFunc(index)))
 	http.Handle("/query", http.HandlerFunc(query))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
-	log.Printf("Serving on %s...\n", ":"+*port)
+	log.Printf("Serving on %s...\n", "0.0.0.0:"+*port)
 	log.Fatal(http.ListenAndServe(":"+*port, nil))
 }
